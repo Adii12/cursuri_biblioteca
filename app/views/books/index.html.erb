@@ -1,4 +1,17 @@
+<h3>Books</h3>
+
+<%= button_to 'New Book', books_new_url, method: :get %>
+<br>
+<br>
 <% @books.each do |book| %>
-  <%= book.title %>
-  <hr>
+  <div class="book_title", style="float-left;">
+    <%= book.title %>
+  </div>
+
+  <div class="actions", style="float-right;">
+    <%= link_to "Show", book_url(book) %>
+    <%= link_to "Edit", edit_book_url(book) %>
+    <%= link_to "Remove", book_url(book), method: :delete, data: { confirm: "Are you sure?" } %> 
+  </div>
+  <hr style="clear:both">
 <% end %>
