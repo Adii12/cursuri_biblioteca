@@ -9,7 +9,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(params.require(:book).permit(:title, :body))
+    @book = Book.new(book_params)
 
     if @book.save
       redirect_to books_url
@@ -49,11 +49,12 @@ class BooksController < ApplicationController
   end
 
   private
-    def find_book
-      @book = Book.find(params[:id])
-    end
 
-    def book_params
-      params.require(:book).permit(:title, :body)
-    end
+  def find_book
+    @book = Book.find(params[:id])
+  end
+
+  def book_params
+    params.require(:book).permit(:title, :body)
+  end
 end
